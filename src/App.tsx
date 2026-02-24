@@ -170,37 +170,44 @@ Posting Capacity: ${capacity}
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 font-sans">
+    <div className="min-h-screen bg-zinc-950 text-zinc-50 font-sans selection:bg-red-500/30 relative overflow-hidden">
+      {/* Background ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] opacity-20 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-red-500/20 to-transparent blur-3xl rounded-full mix-blend-screen" />
+      </div>
+
       {/* Header */}
-      <header className="bg-white border-b border-zinc-200 sticky top-0 z-10">
+      <header className="bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-800/80 sticky top-0 z-50 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-red-600 text-white p-1.5 rounded-lg">
+          <div className="flex items-center gap-3">
+            <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-[0_0_15px_rgba(220,38,38,0.5)] border border-red-400/20">
               <Youtube className="w-5 h-5" />
             </div>
-            <h1 className="font-bold text-xl tracking-tight">YT Strategist</h1>
+            <h1 className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">YT Strategist</h1>
           </div>
-          <div className="text-sm font-medium text-zinc-500">
+          <div className="text-sm font-medium text-zinc-400 px-3 py-1 rounded-full bg-zinc-800/50 border border-zinc-700/50">
             AI-Powered Growth Plans
           </div>
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Form Section */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white rounded-2xl shadow-sm border border-zinc-200 p-6">
-              <h2 className="text-lg font-semibold mb-6 flex items-center gap-2">
-                <Target className="w-5 h-5 text-zinc-400" />
+            <div className="bg-zinc-900/90 backdrop-blur-sm rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.5)] border border-zinc-800 p-6 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <h2 className="text-lg font-semibold mb-6 flex items-center gap-2 text-zinc-100">
+                <Target className="w-5 h-5 text-red-400" />
                 Channel Details
               </h2>
               
-              <form onSubmit={handleGenerate} className="space-y-5">
+              <form onSubmit={handleGenerate} className="space-y-5 relative z-10">
                 <div>
-                  <label htmlFor="topic" className="block text-sm font-medium text-zinc-700 mb-1">
-                    Channel Topic <span className="text-red-500">*</span>
+                  <label htmlFor="topic" className="block text-sm font-medium text-zinc-300 mb-1.5">
+                    Channel Topic <span className="text-red-400">*</span>
                   </label>
                   <input
                     type="text"
@@ -208,14 +215,14 @@ Posting Capacity: ${capacity}
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder="e.g. Personal Finance for Gen Z"
-                    className="w-full px-3 py-2 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 outline-none transition-all text-zinc-100 placeholder:text-zinc-600 shadow-inner"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="audience" className="block text-sm font-medium text-zinc-700 mb-1">
-                    Target Audience <span className="text-zinc-400 font-normal">(Optional)</span>
+                  <label htmlFor="audience" className="block text-sm font-medium text-zinc-300 mb-1.5">
+                    Target Audience <span className="text-zinc-500 font-normal">(Optional)</span>
                   </label>
                   <input
                     type="text"
@@ -223,19 +230,19 @@ Posting Capacity: ${capacity}
                     value={audience}
                     onChange={(e) => setAudience(e.target.value)}
                     placeholder="e.g. College students, young professionals"
-                    className="w-full px-3 py-2 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 outline-none transition-all text-zinc-100 placeholder:text-zinc-600 shadow-inner"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="goal" className="block text-sm font-medium text-zinc-700 mb-1">
+                  <label htmlFor="goal" className="block text-sm font-medium text-zinc-300 mb-1.5">
                     Primary Goal
                   </label>
                   <select
                     id="goal"
                     value={goal}
                     onChange={(e) => setGoal(e.target.value)}
-                    className="w-full px-3 py-2 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all bg-white"
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 outline-none transition-all text-zinc-100 shadow-inner appearance-none"
                   >
                     <option value="views">Maximize Views & AdSense</option>
                     <option value="authority">Build Industry Authority</option>
@@ -246,14 +253,14 @@ Posting Capacity: ${capacity}
                 </div>
 
                 <div>
-                  <label htmlFor="experience" className="block text-sm font-medium text-zinc-700 mb-1">
+                  <label htmlFor="experience" className="block text-sm font-medium text-zinc-300 mb-1.5">
                     Experience Level
                   </label>
                   <select
                     id="experience"
                     value={experience}
                     onChange={(e) => setExperience(e.target.value)}
-                    className="w-full px-3 py-2 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all bg-white"
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 outline-none transition-all text-zinc-100 shadow-inner appearance-none"
                   >
                     <option value="beginner">Beginner (Just starting)</option>
                     <option value="intermediate">Intermediate (Some videos made)</option>
@@ -262,14 +269,14 @@ Posting Capacity: ${capacity}
                 </div>
 
                 <div>
-                  <label htmlFor="capacity" className="block text-sm font-medium text-zinc-700 mb-1">
+                  <label htmlFor="capacity" className="block text-sm font-medium text-zinc-300 mb-1.5">
                     Posting Capacity
                   </label>
                   <select
                     id="capacity"
                     value={capacity}
                     onChange={(e) => setCapacity(e.target.value)}
-                    className="w-full px-3 py-2 border border-zinc-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all bg-white"
+                    className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 outline-none transition-all text-zinc-100 shadow-inner appearance-none"
                   >
                     <option value="1 per week">1 video per week</option>
                     <option value="2-3 per week">2-3 videos per week</option>
@@ -281,7 +288,7 @@ Posting Capacity: ${capacity}
                 <button
                   type="submit"
                   disabled={isGenerating || !topic.trim()}
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+                  className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mt-6 shadow-[0_0_20px_rgba(220,38,38,0.2)] hover:shadow-[0_0_30px_rgba(220,38,38,0.4)] transform hover:-translate-y-0.5 border border-red-400/20"
                 >
                   {isGenerating ? (
                     <>
@@ -297,8 +304,8 @@ Posting Capacity: ${capacity}
                 </button>
                 
                 {error && (
-                  <div className="p-3 bg-red-50 text-red-700 text-sm rounded-lg flex items-start gap-2">
-                    <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
+                  <div className="p-4 bg-red-950/50 border border-red-900 text-red-400 text-sm rounded-xl flex items-start gap-3 backdrop-blur-sm">
+                    <AlertCircle className="w-5 h-5 mt-0.5 shrink-0" />
                     <p>{error}</p>
                   </div>
                 )}
@@ -306,12 +313,12 @@ Posting Capacity: ${capacity}
             </div>
             
             {/* Info Card */}
-            <div className="bg-zinc-100 rounded-2xl p-6 border border-zinc-200">
-              <h3 className="text-sm font-semibold text-zinc-900 mb-2 flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-zinc-500" />
+            <div className="bg-zinc-900/40 backdrop-blur-sm rounded-2xl p-6 border border-zinc-800/50 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+              <h3 className="text-sm font-semibold text-zinc-200 mb-3 flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-red-400" />
                 Pro Tip
               </h3>
-              <p className="text-sm text-zinc-600 leading-relaxed">
+              <p className="text-sm text-zinc-400 leading-relaxed">
                 The more specific your channel topic and target audience, the more actionable and tailored your strategy will be. Don't be afraid to niche down!
               </p>
             </div>
@@ -325,30 +332,32 @@ Posting Capacity: ${capacity}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="h-full min-h-[400px] flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-zinc-200 rounded-2xl bg-white"
+                  className="h-full min-h-[500px] flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-zinc-800 rounded-2xl bg-zinc-900/30 backdrop-blur-sm shadow-[inset_0_0_30px_rgba(0,0,0,0.5)]"
                 >
-                  <div className="w-16 h-16 bg-zinc-100 rounded-full flex items-center justify-center mb-4">
-                    <Calendar className="w-8 h-8 text-zinc-400" />
+                  <div className="w-20 h-20 bg-zinc-900 rounded-2xl flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,0,0,0.3)] border border-zinc-800 transform rotate-3">
+                    <Calendar className="w-10 h-10 text-zinc-500 transform -rotate-3" />
                   </div>
-                  <h3 className="text-lg font-medium text-zinc-900 mb-2">Ready to build your strategy</h3>
-                  <p className="text-zinc-500 max-w-md">
+                  <h3 className="text-xl font-medium text-zinc-200 mb-3">Ready to build your strategy</h3>
+                  <p className="text-zinc-500 max-w-md leading-relaxed">
                     Fill out the form on the left with your channel details, and our AI will generate a comprehensive, step-by-step growth plan.
                   </p>
                 </motion.div>
               ) : (
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="bg-white rounded-2xl shadow-sm border border-zinc-200 p-6 md:p-8"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-zinc-900/90 backdrop-blur-sm rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.6)] border border-zinc-800 p-6 md:p-10 relative overflow-hidden"
                 >
-                  <div className="prose prose-zinc prose-red max-w-none prose-headings:font-semibold prose-h1:text-2xl prose-h1:border-b prose-h1:pb-4 prose-h1:mb-6 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-lg prose-p:leading-relaxed prose-li:my-1">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+                  
+                  <div className="prose prose-invert prose-red max-w-none prose-headings:font-semibold prose-h1:text-3xl prose-h1:border-b prose-h1:border-zinc-800 prose-h1:pb-5 prose-h1:mb-8 prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-5 prose-h3:text-xl prose-p:leading-relaxed prose-p:text-zinc-300 prose-li:text-zinc-300 prose-li:my-1.5 relative z-10">
                     <ReactMarkdown>{strategy}</ReactMarkdown>
                   </div>
                   
                   {isGenerating && (
-                    <div className="flex items-center gap-2 text-zinc-500 mt-8 pt-4 border-t border-zinc-100">
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span className="text-sm">AI is writing your strategy...</span>
+                    <div className="flex items-center gap-3 text-red-400 mt-10 pt-6 border-t border-zinc-800 relative z-10">
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span className="text-sm font-medium">AI is architecting your strategy...</span>
                     </div>
                   )}
                 </motion.div>
