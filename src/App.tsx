@@ -62,7 +62,7 @@ For each include:
 # 6️⃣ SEO STRATEGY
 
 Explain:
-- Keyword approach (recommend specific tools like vidIQ, TubeBuddy, Ahrefs, or YouTube Search Auto-suggest)
+- Keyword approach (recommend specific tools like vidIQ, TubeBuddy, Ahrefs, and elaborate on how to effectively use YouTube Search Auto-suggest for finding long-tail keywords)
 - Title formula
 - Thumbnail psychology
 - Description structure
